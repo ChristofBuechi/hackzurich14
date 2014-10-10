@@ -7,14 +7,34 @@
 // =============================================================================
 
 // call the packages we need
-var express = require('express'); 		// call express
 var app = express(); 				// define our app using express
-var bodyParser = require('body-parser');
-
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://8c2bd0d9-c8ab-4eb0-a7be-b71e7a86b1e8:a7d23327-eac7-4edb-adb7-ae690a7960ac@100.64.2.101:10074/db'); // connect to our database
-
+var express = require('express'); 		// call express
 var Video = require('./app/models/video');
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+var createFakeDataArray = function(){
+    var array = []
+    var video = new Video();
+    video.username = "bender";
+    video.thumbnail = "thumbnail URL";
+    video.video = "video URL";
+    video.creationDate = 1234;
+    video.sizeInKb = 1024;
+    video.lengthInSeconds = 15;
+    array.push(video);
+    array.push(
+        {
+            "username": "bender",
+            "thumbnail": "thumbnail URL",
+            "video": "video URL",
+            creationDate: 123124213,
+            sizeInKb: 1024,
+            lengthInSeconds: 15});
+    return array;
+}
+
+mongoose.connect('mongodb://8c2bd0d9-c8ab-4eb0-a7be-b71e7a86b1e8:a7d23327-eac7-4edb-adb7-ae690a7960ac@100.64.2.101:10074/db'); // connect to our database
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -47,27 +67,23 @@ router.route('/video')
 router.route('/videos/latest')
     // get all the bears (accessed at GET http://localhost:8080/api/bears)
     .get(function (req, res) {
-        var array = []
-        var video = new Video();
-        video.username = "bender";
-        video.thumbnail = "thumbnail URL";
-        video.video = "video URL";
-        video.creationDate = 1234;
-        video.sizeInKb = 1024;
-        video.lengthInSeconds = 15;
-        array.push(video);
-        array.push(
-            {
-                "username": "bender",
-                "thumbnail": "thumbnail URL",
-                "video": "video URL",
-                creationDate: 123124213,
-                sizeInKb: 1024,
-                lengthInSeconds: 15});
+        var array = createFakeDataArray();
+
         res.json(array);
     });
 
+router.router('videos/top').get(function(req,res){
+    var array = createFakeDataArray();
+    res.json(array);
+})
 
+router.router('videos/:user_id').get(function(req,res){
+    Video.findById(req.params.user_id, function(err, videos) {
+        if (err){res.send(err);}
+
+        res.json(videos);
+    });
+})
 /*        Video.find(function(err, bears) {
 
  res.json(videos);
