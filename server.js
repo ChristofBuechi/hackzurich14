@@ -7,8 +7,8 @@
 // =============================================================================
 
 // call the packages we need
-var app = express(); 				// define our app using express
 var express = require('express'); 		// call express
+var app = express(); 				// define our app using express
 var Video = require('./app/models/video');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -72,12 +72,12 @@ router.route('/videos/latest')
         res.json(array);
     });
 
-router.router('videos/top').get(function(req,res){
+router.route('videos/top').get(function(req,res){
     var array = createFakeDataArray();
     res.json(array);
 })
 
-router.router('videos/:user_id').get(function(req,res){
+router.route('videos/:user_id').get(function(req,res){
     Video.findById(req.params.user_id, function(err, videos) {
         if (err){res.send(err);}
 
