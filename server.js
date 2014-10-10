@@ -13,28 +13,11 @@ var Video = require('./app/models/video');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-var createFakeDataArray = function(){
-    var array = []
-    var video = new Video();
-    video.username = "bender";
-    video.thumbnail = "thumbnail URL";
-    video.video = "video URL";
-    video.creationDate = 1234;
-    video.sizeInKb = 1024;
-    video.lengthInSeconds = 15;
-    array.push(video);
-    array.push(
-        {
-            "username": "bender",
-            "thumbnail": "thumbnail URL",
-            "video": "video URL",
-            creationDate: 123124213,
-            sizeInKb: 1024,
-            lengthInSeconds: 15});
-    return array;
-}
+var video_latest = require('./rest/videolatest');
+var video_top = require('./rest/videotop');
+var videoByUserId = require('./rest/videobyuserid');
 
-mongoose.connect('mongodb://8c2bd0d9-c8ab-4eb0-a7be-b71e7a86b1e8:a7d23327-eac7-4edb-adb7-ae690a7960ac@100.64.2.101:10074/db'); // connect to our database
+// TODO mongoose.connect('mongodb://8c2bd0d9-c8ab-4eb0-a7be-b71e7a86b1e8:a7d23327-eac7-4edb-adb7-ae690a7960ac@100.64.2.101:10074/db'); // connect to our database
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -48,7 +31,6 @@ var port = process.env.PORT || 8080; 		// set our port
 var router = express.Router(); 				// get an instance of the express Router
 
 router.route('/video')
-
     // create a bear (accessed at POST http://localhost:8080/api/bears)
     .post(function (req, res) {
 
@@ -64,26 +46,10 @@ router.route('/video')
         });
 
     });
-router.route('/videos/latest')
-    // get all the bears (accessed at GET http://localhost:8080/api/bears)
-    .get(function (req, res) {
-        var array = createFakeDataArray();
-
-        res.json(array);
-    });
-
-router.route('videos/top').get(function(req,res){
-    var array = createFakeDataArray();
-    res.json(array);
-})
-
-router.route('videos/:user_id').get(function(req,res){
-    Video.findById(req.params.user_id, function(err, videos) {
-        if (err){res.send(err);}
-
-        res.json(videos);
-    });
-})
+// get all the bears (accessed at GET http://localhost:8080/api/video/latest)
+router.route('/videos/latest').get(video_latest);
+router.route('/videos/top').get(video_top);
+router.route('/videos/:user_id').get(videoByUserId);
 /*        Video.find(function(err, bears) {
 
  res.json(videos);
