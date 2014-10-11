@@ -3,7 +3,7 @@
  */
 var Video = require('./../app/models/video');
 var videobyuserid = function (req, res) {
-    var query = Video.findOne({ 'username': req.params.user_id });
+    var query = Video.find({ 'username': req.params.user_id });
     query.select('clientsideid username thumbnail videoUrl creationDate sizeInKb lengthInSeconds');
     query.exec(function (err, person) {
         if (err) {
@@ -12,5 +12,5 @@ var videobyuserid = function (req, res) {
         }
         res.json(videos);
     });
-}
+};
 module.exports = videobyuserid;
