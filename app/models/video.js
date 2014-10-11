@@ -10,7 +10,7 @@ var VideoSchema = new Schema({
     clientsideid:String,
     username: String,
     thumbnail: String,
-    videoUrl: String,
+    video: String,
     creationDate: { type: Date, default: Date.now },
     sizeInKb: Number,
     lengthInSeconds: Number
