@@ -1,15 +1,28 @@
 <div class="box">
 
 
+    <div ng-repeat="video in latestVideos">
 
-
-
-
-    <ul>
-        <li ng-repeat="video in latestVideos">
+        <div class="videobox col-md-5">
             <video width="320" controls poster="{{video.thumbnail | trusted }}">
-                <source ng-src="{{video.video | trusted}}" />
+                <source ng-src="{{video.video | trusted}}"/>
             </video>
-        </li>
-    </ul>
-</div>
+
+            <div class="row">
+                <div class="col-md-4">Länge</div>
+                <div class="col-md-2"></div>
+                <div class="col-md-6">{{video.lengthInSeconds}} Seconds</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">Videosize</div>
+                <div class="col-md-2"></div>
+                <div class="col-md-6">{{video.sizeInKb / 1024 | number : 1}} MB</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">Creator</div>
+                <div class="col-md-2"></div>
+                <div class="col-md-6">{{video.username}}</div>
+            </div>
+
+        </div>
+    </div>
