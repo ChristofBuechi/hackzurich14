@@ -8,7 +8,9 @@ var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
     username: String,
-    secret: String
+    secret: String,
+    token: String,
+    validUntil: Number
 });
 
 module.exports = mongoose.model('User', UserSchema);
