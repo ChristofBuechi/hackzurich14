@@ -1,8 +1,8 @@
 <div>
     <ul>
         <li ng-repeat="video in latestVideos">
-            <video width="320">
-                <source src="video.video">
+            <video width="320" controls poster="{{video.thumbnail | trusted }}">
+                <source ng-src="{{video.video | trusted}}" />
             </video>
         </li>
     </ul>
