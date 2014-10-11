@@ -6,5 +6,14 @@
 </head>
 <body>
 <h1>I hate H1</h1>
+<form action="./api/video"  method="post"  enctype="multipart/form-data">
+    <input type="text" name="username"><br>
+       <input type="text" name="creationDate">  <!-- is optional --><br>
+      <input type="number" name="sizeInKb"><br>
+      <input type="number" name="lengthInSeconds"><br>
+            <input type="file" name="video"><br>
+           <input type="file" name="thumbnail"><br>
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>
