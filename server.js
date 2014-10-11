@@ -16,7 +16,7 @@ var video_latest = require('./rest/videolatest');
 var video_top = require('./rest/videotop');
 var videoByUserId = require('./rest/videobyuserid');
 var video_create = require('./rest/videocreate');
-var user_create = require ('./rest/usercreate');
+var user_create = require('./rest/usercreate');
 var listallusers = require('./rest/getallusers');
 //mongoose.connect('mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@100.64.2.101:10074/db'); // connect to our database
 mongoose.connect('mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@127.0.0.1:3000/db'); // connect to our database
@@ -64,8 +64,8 @@ router.get('/', function (req, res) {
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);
-app.get('/', function(req,res){
-    res.res.sendFile(__dirname + '/public/index.html');
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/public/index.html');
 });
 // START THE SERVER
 // =============================================================================

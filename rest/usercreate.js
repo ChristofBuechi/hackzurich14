@@ -10,11 +10,11 @@ var createUser = function (req, res) {
     user.username = req.body.username;
     user.secret = req.body.secret;
     user.save(function (err) {
-        if (err)
+        if (err) {
             res.send(err);
-
-        res.json({ message: 'user created!' });
+        }
     });
-
-};
-module.exports=createUser;
+    res.json({ message: 'user created!' });
+}
+;
+module.exports = createUser;
