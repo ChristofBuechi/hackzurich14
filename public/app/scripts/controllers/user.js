@@ -14,16 +14,16 @@ angular.module('publicApp')
 
 
 // implement magic here
-        $http.get('/api/users').
-            success(function (data) {
+        $http.get('/api/users').success(function (data) {
                 $scope.userlist = data;
             });
 
-
+        console.log("Test");
 
 
         $scope.getVideosofUser = function(user) {
-            $http.get('/api/videos/user').
+            console.log("test inside function");
+            $http.get('/api/videos/' + user).
                 success(function (data) {
                     $scope.UserVideos = data;
                 });
