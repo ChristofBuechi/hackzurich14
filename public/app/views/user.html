@@ -1,5 +1,12 @@
 <div class="box row">
 
+    <form>
+    <select ng-model="selectedUser" ng-options="user.username for user in userlist"></select>
+        <button ng-click="getVideosofUser(selectedUser)">get Videos for {{selectedUser}}</button>
+    </form>
+</div>
+<div class="box row">
+
 
     <div ng-repeat="video in UserVideos">
 
