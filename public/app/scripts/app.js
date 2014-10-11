@@ -15,7 +15,7 @@ angular
         'ngResource',
         'ngRoute',
         'ngSanitize',
-        'ngTouch'
+        'ngTouch',
     ])
     .config(function ($routeProvider) {
         $routeProvider
@@ -33,4 +33,8 @@ angular
             .otherwise({
                 redirectTo: '/'
             });
-    });
+    }).filter('trusted', ['$sce', function ($sce) {
+        return function(url) {
+            return $sce.trustAsResourceUrl(url);
+        };
+    }]);

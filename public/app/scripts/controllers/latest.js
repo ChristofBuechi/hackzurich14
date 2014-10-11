@@ -8,7 +8,7 @@
  * Controller of the publicApp
  */
 angular.module('publicApp')
-    .controller('LatestVideos', function ($scope) {
+    .controller('LatestVideos', function ($scope,$http) {
 // implement magic here
         $http.get('/api/videos/latest').
             success(function (data) {
