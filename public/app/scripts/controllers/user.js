@@ -18,11 +18,7 @@ angular.module('publicApp')
                 $scope.userlist = data;
             });
 
-        console.log("Test");
-
-
         $scope.getVideosofUser = function(user) {
-            console.log("test inside function");
             $http.get('/api/videos/' + user).
                 success(function (data) {
                     $scope.UserVideos = data;
