@@ -8,7 +8,6 @@ var videocreate = function (req, res) {
     var form = new formidable.IncomingForm();
     form.encoding = 'utf-8';
     var video = new Video();
-
     function updateMatchingProperties(name, value) {
         for (var property in video) {
             if (property === name) {
