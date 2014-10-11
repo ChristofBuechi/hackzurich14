@@ -10,7 +10,7 @@
 angular.module('publicApp')
     .controller('UserVideos', function ($scope, $http) {
         $scope.UserVideos = [];
-        $scope.selectedUser = none;
+        $scope.selectedUser = "";
 
 
 // implement magic here
