@@ -5,7 +5,6 @@
 
 // BASE SETUP
 // =============================================================================
-
 // call the packages we need
 var express = require('express'); 		// call express
 var app = express(); 				// define our app using express
@@ -18,7 +17,9 @@ var video_top = require('./rest/videotop');
 var videoByUserId = require('./rest/videobyuserid');
 var video_create = require('./rest/videocreate');
 var user_create = require ('./rest/usercreate');
-mongoose.connect('mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@100.64.2.101:10074/db'); // connect to our database
+var listallusers = require('./rest/getallusers');
+//mongoose.connect('mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@100.64.2.101:10074/db'); // connect to our database
+mongoose.connect('mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@127.0.0.1:3000/db'); // connect to our database
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -37,6 +38,7 @@ router.route('/videos/latest').get(video_latest);
 router.route('/videos/top').get(video_top);
 router.route('/videos/:user_id').get(videoByUserId);
 router.route('/user').post(user_create);
+router.route('/users').get(listallusers);
 /*        Video.find(function(err, bears) {
 
  res.json(videos);
@@ -62,8 +64,9 @@ router.get('/', function (req, res) {
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);
-
-
+app.get('/', function(req,res){
+    res.res.sendFile(__dirname + '/public/index.html');
+});
 // START THE SERVER
 // =============================================================================
 app.listen(port);
