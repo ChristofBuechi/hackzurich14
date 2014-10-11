@@ -8,6 +8,7 @@
 // call the packages we need
 var express = require('express'); 		// call express
 var app = express(); 				// define our app using express
+var path = require('path');
 var Video = require('./app/models/video');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -67,6 +68,11 @@ app.use('/api', router);
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/public/app/index.html');
 });
+
+app.use(express.static(path.join(__dirname, 'public'))); //  "public" off of current is root
+
+// app.use('/main/',express.static(__dirname+'/public'));
+
 // START THE SERVER
 // =============================================================================
 app.listen(port);
