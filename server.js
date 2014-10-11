@@ -65,7 +65,7 @@ router.get('/', function (req, res) {
 // all of our routes will be prefixed with /api
 app.use('/api', router);
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile(__dirname + '/public/app/index.html');
 });
 // START THE SERVER
 // =============================================================================
