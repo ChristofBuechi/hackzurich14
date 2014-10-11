@@ -36,7 +36,7 @@ var videocreate = function (req, res) {
     });
     form.on('error', function (name, file) {
         console.log('onFile ' + name);
-        console.log(file.path);
+        console.log(file);
         res.end();
     });
     form.on('end', function () {

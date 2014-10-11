@@ -10,9 +10,9 @@
 angular.module('publicApp')
     .controller('LatestVideos', function ($scope) {
 // implement magic here
-            $http.get('/api/videos/latest').
-                success(function (data) {
-                    $scope.latestVideos = data;
-                });
+        $http.get('/api/videos/latest').
+            success(function (data) {
+                $scope.latestVideos = data;
+            });
     })
 ;
