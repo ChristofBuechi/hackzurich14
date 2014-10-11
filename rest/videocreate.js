@@ -36,7 +36,6 @@ var videocreate = function (req, res) {
         if(name==='thumbnail'){
             fileExtenison = '.jpg';
         }
-
         uniqueFilename += fileExtenison;
         console.log('path: '+filePath+' name: '+file.name);
         var url =  aws(uniqueFilename, filePath);
