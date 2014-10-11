@@ -1,6 +1,7 @@
 /**
  * Created by stone on 11.10.2014.
  */
+var uuid = require('node-uuid');
 var formidable = require("formidable");
 var Video = require('./../app/models/video');
 var aws = require('./../app/services/aws');
@@ -29,9 +30,11 @@ var videocreate = function (req, res) {
     });
     form.on('file', function (name, file) {
         console.log('onFile ' + name);
-        console.log('path: '+file.path+' name: '+file.name);
-        var url =  aws(file.name, file.path);
-        console.log("file.name:" +url);
+        var uniqueFilename = uuid.v4();
+        var filePath =file.path;
+        console.log('path: '+filePath+' name: '+file.name);
+        var url =  aws(uniqueFilename, filePath);
+        console.log("file.name on s3:" +url);
         updateMatchingProperties(name, url);
     });
     form.on('error', function (name, file) {
