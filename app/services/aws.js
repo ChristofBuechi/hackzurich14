@@ -40,6 +40,7 @@ function getContentTypeByFile(fileName) {
     else if (fileNameLowerCase.indexOf('.js') >= 0) rc = 'application/x-javascript';
     else if (fileNameLowerCase.indexOf('.png') >= 0) rc = 'image/png';
     else if (fileNameLowerCase.indexOf('.jpg') >= 0) rc = 'image/jpg';
+    else if (fileNameLowerCase.indexOf('.mp4') >= 0) rc = 'video/mp4';
 
     return rc;
 }
