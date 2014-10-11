@@ -4,13 +4,13 @@
 var Video = require('./../app/models/video');
 var latest = function (req, res) {
     var query = Video.find({ });
-    query.select(' username thumbnail video creationDate sizeInKb lengthInSeconds');
+    query.select('username thumbnail video creationDate sizeInKb lengthInSeconds');
     query.exec(function (err, videos) {
         if (err) {
             console.error(err);
             res.send(err);
         }
-        res.json(videos);
+        res.json(videos.reverse());
     });
 }
 module.exports = latest;
