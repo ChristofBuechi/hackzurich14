@@ -12,5 +12,12 @@ logs
 results
  
 node_modules
+bower_components
 npm-debug.log
 *.idea
+
+
+public/bower_components
+public/node_modules
+public/dist
+public/test
