@@ -10,7 +10,7 @@ var videobyuserid = function (req, res) {
             console.error(err);
             res.send(err);
         }
-        res.json(videos);
+        res.json(person);
     });
 };
 module.exports = videobyuserid;
