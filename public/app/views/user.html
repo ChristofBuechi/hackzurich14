@@ -1,12 +1,10 @@
 <div class="box row">
+Please select the User to show the Videos from:
 
-    <form>
-    <select ng-model="selectedUser" ng-options="user.username for user in userlist"></select>
-        <button ng-click="getVideosofUser(selectedUser)">get Videos for {{selectedUser}}</button>
-    </form>
+    <select ng-model="selectedUser" ng-options="user.username for user in userlist" ng-change="getVideosofUser(selectedUser)"></select>
 </div>
 <div class="box row">
-
+    The selected user {{selectedUser.username}} has actually {{UserVideos.length}} videos online.
 
     <div ng-repeat="video in UserVideos">
 
