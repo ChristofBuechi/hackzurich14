@@ -22,19 +22,18 @@
 <div class="container">
     <div class="header">
         <ul class="nav nav-pills pull-right">
-            <li class="active"><a ng-href="#">Home</a></li>
-            <li><a ng-href="#/about">Top Videos</a></li>
-            <li><a ng-href="#/latest">Latest Videos</a></li>
-            <li><a ng-href="#/user">User Videos</a></li>
+            <li><a ng-href="#" active-link="active">Home</a></li>
+            <li><a ng-href="#/about" active-link="active">Top Videos</a></li>
+            <li><a ng-href="#/latest" active-link="active">Latest Videos</a></li>
+            <li><a ng-href="#/user" active-link="active">User Videos</a></li>
         </ul>
-        <h3 class="text-muted">Fovie</h3>
+        <h3 class="text-muted">Foovie</h3>
+        Video Showing Page
     </div>
 
     <div ng-view=""></div>
 
-    <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-    </div>
+
 </div>
 
 
@@ -65,6 +64,7 @@
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/about.js"></script>
 <script src="scripts/controllers/latest.js"></script>
+<script src="scripts/controllers/user.js"></script>
 <!-- endbuild -->
 </body>
 </html>

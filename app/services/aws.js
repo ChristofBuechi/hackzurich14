@@ -5,7 +5,6 @@
 var BUCKET_NAME = 'foovie';
 
 var fs = require('fs');
-var mime = require('mime');
 
 var aws = require('aws-sdk');
 aws.config.loadFromPath('./config_aws.json');
@@ -58,8 +57,6 @@ function getContentTypeByFile(filePath) {
     }
     else if (fileNameLowerCase.indexOf('.mp4') >= 0) {
         rc = 'video/mp4';
-    }else{
-        rc = mime.lookup(filePath);
     }
 
     return rc;

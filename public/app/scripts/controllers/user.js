@@ -8,11 +8,11 @@
  * Controller of the publicApp
  */
 angular.module('publicApp')
-  .controller('TopVideos', function ($scope, $http) {
+    .controller('UserVideos', function ($scope, $http) {
 // implement magic here
-        $http.get('/api/videos/top').
+        $http.get('/api/videos/bender').
             success(function (data) {
-                $scope.TopVideos = data;
+                $scope.UserVideos = data;
             });
     })
 ;
