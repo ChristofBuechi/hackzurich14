@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var VideoSchema = new Schema({
+    clientsideid:String,
     username: String,
     thumbnail: String,
     videoUrl: String,
