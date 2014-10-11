@@ -8,6 +8,7 @@ var videocreate = function (req, res) {
     var form = new formidable.IncomingForm();
     form.encoding = 'utf-8';
     var video = new Video();
+
     function updateMatchingProperties(name, value) {
         for (var property in video) {
             if (property === name) {
@@ -38,11 +39,11 @@ var videocreate = function (req, res) {
             }
         });
     });
-    form.parse(req,function(err, fields, files) {
+    form.parse(req, function (err, fields, files) {
         console.log('parse.....');
-   //     res.writeHead(200, {'content-type': 'text/plain'});
+        //     res.writeHead(200, {'content-type': 'text/plain'});
         res.write('Received upload:\n\n');
-     //   res.end(util.inspect(files));
+        //   res.end(util.inspect(files));
     });
 };
 module.exports = videocreate;
