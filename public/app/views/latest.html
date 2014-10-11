@@ -4,7 +4,7 @@
     <div ng-repeat="video in latestVideos">
 
         <div class="videobox col-md-6">
-            <video width="320" controls poster="{{video.thumbnail | trusted }}">
+            <video onplay="foovieessential.trackPlay(this)" _id="{{video._id}}" width="320" controls poster="{{video.thumbnail | trusted }}">
                 <source ng-src="{{video.video | trusted}}"/>
             </video>
 

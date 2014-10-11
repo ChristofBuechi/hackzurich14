@@ -13,7 +13,8 @@ var VideoSchema = new Schema({
     video: String,
     creationDate: { type: Date, default: Date.now },
     sizeInKb: Number,
-    lengthInSeconds: Number
+    lengthInSeconds: Number,
+    views: Number
 });
 
 module.exports = mongoose.model('Video', VideoSchema);

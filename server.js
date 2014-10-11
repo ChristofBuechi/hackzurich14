@@ -13,9 +13,10 @@ var Video = require('./app/models/video');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-var mongoConnectionconf = 'mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@100.64.2.101:10074/db'
+// var mongoConnectionconf = 'mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@100.64.2.101:10074/db';
+var mongoConnectionconf = 'mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@127.0.0.1:30000/db'; // connect to our database
+
 mongoose.connect(mongoConnectionconf); // connect to our database
-//  mongoose.connect('mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@127.0.0.1:30000/db'); // connect to our database
 
 
 // configure app to use bodyParser()
@@ -35,9 +36,11 @@ var user_create = require('./rest/usercreate');
 var listallusers = require('./rest/getallusers');
 var userauthenticateRequest = require('./rest/userauthenticaterequest');
 var userauthenticateResponse = require('./rest/userauthenticateresponse');
+var video_view = require('./rest/videoview');
 var router = express.Router(); 				// get an instance of the express Router
 // create a video (accessed at POST http://localhost:8080/api/video)
 router.route('/video').post(video_create);
+router.route('/video/view').post(video_view);
 // get all the bears (accessed at GET http://localhost:8080/api/video/latest)
 router.route('/videos/latest').get(video_latest);
 router.route('/videos/top').get(video_top);
