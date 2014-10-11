@@ -9,10 +9,23 @@
  */
 angular.module('publicApp')
     .controller('UserVideos', function ($scope, $http) {
+        $scope.UserVideos = [];
+        $scope.selectedUser = none;
+
+
 // implement magic here
-        $http.get('/api/videos/bender').
+        $http.get('/api/users').
             success(function (data) {
-                $scope.UserVideos = data;
+                $scope.userlist = data;
             });
-    })
-;
+
+
+
+
+        $scope.getVideosofUser = function(user) {
+            $http.get('/api/videos/user').
+                success(function (data) {
+                    $scope.UserVideos = data;
+                });
+        };
+    });
