@@ -11,6 +11,7 @@ var videocreate = function (req, res) {
     form.encoding = 'utf-8';
     var video = new Video();
     var filesToDelete=[]
+
     function updateMatchingProperties(name, value) {
         for (var property in video) {
             if (property === name) {
@@ -46,9 +47,9 @@ var videocreate = function (req, res) {
             }
         });
     });
-    form.parse(req,function(err, fields, files) {
+    form.parse(req, function (err, fields, files) {
         console.log('parse.....');
-   //     res.writeHead(200, {'content-type': 'text/plain'});
+        //     res.writeHead(200, {'content-type': 'text/plain'});
         res.write('Received upload:\n\n');
      //   res.end(util.inspect(files));
         filesToDelete.forEach(function(file){
@@ -57,6 +58,7 @@ var videocreate = function (req, res) {
                 console.log('successfully deleted: '+ file);
             });
         })
+        //   res.end(util.inspect(files));
     });
 };
 module.exports = videocreate;

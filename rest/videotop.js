@@ -2,7 +2,7 @@
  * Created by stone on 11.10.2014.
  */
 var Video = require('./../app/models/video');
-var videotop = function(req,res){
+var videotop = function (req, res) {
     var array = [];
     var video = new Video();
     video.username = "bender";
