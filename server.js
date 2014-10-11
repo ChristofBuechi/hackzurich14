@@ -19,8 +19,8 @@ var videoByUserId = require('./rest/videobyuserid');
 var video_create = require('./rest/videocreate');
 var user_create = require('./rest/usercreate');
 var listallusers = require('./rest/getallusers');
-mongoose.connect('mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@100.64.2.101:10074/db'); // connect to our database
-//mongoose.connect('mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@127.0.0.1:30000/db'); // connect to our database
+//mongoose.connect('mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@100.64.2.101:10074/db'); // connect to our database
+mongoose.connect('mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@127.0.0.1:30000/db'); // connect to our database
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -68,8 +68,7 @@ app.use('/api', router);
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/public/app/index.html');
 });
-
-app.use(express.static(path.join(__dirname, 'public'))); //  "public" off of current is root
+app.use(express.static(path.join(__dirname, 'public/app'))); //  "public" off of current is root
 
 // app.use('/main/',express.static(__dirname+'/public'));
 
