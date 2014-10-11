@@ -7,7 +7,7 @@ var BUCKET_NAME = 'foovie';
 var fs = require('fs');
 
 var aws = require('aws-sdk');
-aws.config.loadFromPath('./AwsConfig.json');
+aws.config.loadFromPath('./config_aws.json');
 
 var s3 = new aws.S3();
 
@@ -15,7 +15,7 @@ var s3 = new aws.S3();
 var uploadVideo = function (remoteFilename, fileName) {
     var fileBuffer = fs.readFileSync(fileName);
     var metaData = getContentTypeByFile(fileName);
-
+    console.log('AWS uploader received order: remoteFilename: '+remoteFilename+" fileName: "+fileName);
     s3.putObject({
         ACL: 'public-read',
         Bucket: BUCKET_NAME,

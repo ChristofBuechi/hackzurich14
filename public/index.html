@@ -6,14 +6,20 @@
 </head>
 <body>
 <h1>I hate H1</h1>
-<form action="./api/video"  method="post"  enctype="multipart/form-data">
-    <input type="text" name="username"><br>
-       <input type="text" name="creationDate">  <!-- is optional --><br>
-      <input type="number" name="sizeInKb"><br>
-      <input type="number" name="lengthInSeconds"><br>
-            <input type="file" name="video"><br>
-           <input type="file" name="thumbnail"><br>
+
+<h2>post a video</h2>
+<form action="./api/video" method="post" enctype="multipart/form-data">
+    username <input  type="text" name="username"><br>
+    creationdate (optional)<input type="text" name="creationDate"> <!-- is optional --><br>
+    sizeInKb <input type="number" name="sizeInKb"><br>
+    lengthInSeconds <input type="number" name="lengthInSeconds"><br>
+    video<input type="file" name="video"><br>
+    thumbnail<input type="file" name="thumbnail"><br>
     <input type="submit" value="Submit">
 </form>
+<h2>may some useful links</h2>
+<a href="/api/users">get all Users</a><br>
+<a href="/api/videos">get all Videos</a>
 </body>
+
 </html>
