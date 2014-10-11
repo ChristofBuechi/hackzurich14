@@ -10,11 +10,11 @@ var videocreate = function (req, res) {
     var form = new formidable.IncomingForm();
     form.encoding = 'utf-8';
     var video = new Video();
-    var filesToDelete=[]
 
     function updateMatchingProperties(name, value) {
+        if(!value){return;}
         for (var property in video) {
-            if (property === name) {
+            if (property === name  ) {
                 video[property] = value;
             }
         }
@@ -30,9 +30,9 @@ var videocreate = function (req, res) {
     form.on('file', function (name, file) {
         console.log('onFile ' + name);
         console.log('path: '+file.path+' name: '+file.name);
-        var url =  aws(name, file.path);
-        updateMatchingProperties(file.name, url);
-        filesToDelete.push(file);
+        var url =  aws(file.name, file.path);
+        console.log("file.name:" +url);
+        updateMatchingProperties(name, url);
     });
     form.on('error', function (name, file) {
         console.log('onFile ' + name);
@@ -41,23 +41,21 @@ var videocreate = function (req, res) {
     });
     form.on('end', function () {
         console.log('end');
+        console.log(video);
         video.save(function (err) {
             if (err) {
+                console.log(err);
                 res.send(err);
             }
         });
+        res.write('Received upload!\n\n');
+        res.end();
     });
     form.parse(req, function (err, fields, files) {
         console.log('parse.....');
         //     res.writeHead(200, {'content-type': 'text/plain'});
-        res.write('Received upload:\n\n');
+
      //   res.end(util.inspect(files));
-        filesToDelete.forEach(function(file){
-            fs.unlink(file, function (err) {
-                if (err) throw err;
-                console.log('successfully deleted: '+ file);
-            });
-        })
         //   res.end(util.inspect(files));
     });
 };
