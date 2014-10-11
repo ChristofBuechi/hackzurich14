@@ -32,6 +32,8 @@ var videocreate = function (req, res) {
         console.log('onFile ' + name);
         var uniqueFilename = uuid.v4();
         var filePath =file.path;
+        var fileExtenison = '.mov'; // TODO fix this when time and sleep are your friends!
+        uniqueFilename += fileExtenison;
         console.log('path: '+filePath+' name: '+file.name);
         var url =  aws(uniqueFilename, filePath);
         console.log("file.name on s3:" +url);
