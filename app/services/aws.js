@@ -24,10 +24,13 @@ var uploadVideo = function (remoteFilename, fileName) {
         ContentType: metaData
     }, function (error, response) {
         console.log('uploaded file[' + fileName + '] to [' + remoteFilename + '] as [' + metaData + ']');
-        console.log(arguments);
+        fs.unlink(fileName, function (err) {
+            if (err) throw err;
+            console.log('successfully deleted: '+ fileName);
+        });
     });
 
-    return "https://s3-us-west-2.amazonaws.com/" + BUCKET_NAME + "/" + fileName;
+    return "https://s3-us-west-2.amazonaws.com/" + BUCKET_NAME + "/" + remoteFilename;
 };
 
 function getContentTypeByFile(fileName) {

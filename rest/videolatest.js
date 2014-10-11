@@ -3,22 +3,14 @@
  */
 var Video = require('./../app/models/video');
 var latest = function (req, res) {
-    var array = [];
-    var video = new Video();
-    video.username = "bender";
-    video.thumbnail = "thumbnail URL";
-    video.video = "video URL";
-    video.creationDate = 1234;
-    video.sizeInKb = 1024;
-    video.lengthInSeconds = 15;
-    array.push(video);
-    array.push({
-        "username": "bender",
-        "thumbnail": "thumbnail URL",
-        "video": "video URL",
-        creationDate: 123124213,
-        sizeInKb: 1024,
-        lengthInSeconds: 15});
-    res.json(array);
+    var query = Video.find({ });
+    query.select(' username thumbnail video creationDate sizeInKb lengthInSeconds');
+    query.exec(function (err, videos) {
+        if (err) {
+            console.error(err);
+            res.send(err);
+        }
+        res.json(videos);
+    });
 }
 module.exports = latest;
