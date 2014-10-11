@@ -33,6 +33,10 @@ var videocreate = function (req, res) {
         var uniqueFilename = uuid.v4();
         var filePath =file.path;
         var fileExtenison = '.mov'; // TODO fix this when time and sleep are your friends!
+        if(name==='thumbnail'){
+            fileExtenison = '.jpg';
+        }
+
         uniqueFilename += fileExtenison;
         console.log('path: '+filePath+' name: '+file.name);
         var url =  aws(uniqueFilename, filePath);
