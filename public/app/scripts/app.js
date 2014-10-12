@@ -32,6 +32,8 @@ angular
             }).when('/user', {
                 templateUrl: 'views/user.html',
                 controller: 'UserVideos'
+            }).when('/upload', {
+                templateUrl: 'views/upload.html'
             })
             .otherwise({
                 redirectTo: '/'
