@@ -23,8 +23,8 @@ angular
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
-            .when('/about', {
-                templateUrl: 'views/about.html',
+            .when('/top', {
+                templateUrl: '../views/top.html',
                 controller: 'TopVideos'
             }).when('/latest', {
                 templateUrl: 'views/latest.html',
