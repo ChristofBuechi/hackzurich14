@@ -7,7 +7,6 @@ var BUCKET_NAME = 'foovie';
 var fs = require('fs');
 
 var aws = require('aws-sdk');
-aws.config.loadFromPath('./config_aws.json');
 
 var s3 = new aws.S3();
 
