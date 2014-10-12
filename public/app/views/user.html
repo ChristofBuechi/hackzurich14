@@ -1,7 +1,7 @@
 <div class="box row">
 Please select the User to show the Videos from:
 
-    <select ng-model="selectedUser" ng-options="user.username for user in userlist" ng-change="getVideosofUser(selectedUser)"></select>
+    <select ng-model="selectedUser" ng-options="user for user in userlist" ng-change="getVideosofUser(selectedUser)"></select>
 </div>
 <div class="box row">
     The selected user {{selectedUser.username}} has actually {{UserVideos.length}} videos online.
