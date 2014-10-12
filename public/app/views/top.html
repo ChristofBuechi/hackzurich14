@@ -1,12 +1,7 @@
 <div class="box row">
-Please select the User to show the Videos from:
 
-    <select ng-model="selectedUser" ng-options="user.username for user in userlist" ng-change="getVideosofUser(selectedUser)"></select>
-</div>
-<div class="box row">
-    The selected user {{selectedUser.username}} has actually {{UserVideos.length}} videos online.
 
-    <div ng-repeat="video in UserVideos">
+    <div ng-repeat="video in TopVideos">
 
         <div class="videobox col-md-6">
             <video onplay="foovieessential.trackPlay(this)" _id="{{video._id}}" width="320" controls poster="{{video.thumbnail | trusted }}">
@@ -14,7 +9,7 @@ Please select the User to show the Videos from:
             </video>
 
             <div class="row">
-                <div class="col-md-4">Länge</div>
+                <div class="col-md-4">Length</div>
                 <div class="col-md-2"></div>
                 <div class="col-md-6">{{video.lengthInSeconds}} Seconds</div>
             </div>
@@ -28,6 +23,10 @@ Please select the User to show the Videos from:
                 <div class="col-md-2"></div>
                 <div class="col-md-6"><a href="/api/videos/{{video.username}}">{{video.username}}</a></div>
             </div>
-
+            <div class="row">
+                <div class="col-md-4">Views</div>
+                <div class="col-md-2"></div>
+                <div class="col-md-6">{{video.views}}</div>
+            </div>
         </div>
     </div>
