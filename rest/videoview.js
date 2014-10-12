@@ -4,15 +4,13 @@
 var uuid = require('node-uuid');
 var Video = require('./../app/models/video');
 var viewRegister = function (req, res) {
-    console.log(req.body);
     var videoId = req.body.videoId;
-    console.log(videoId);
     Video.findById(videoId, function (err, video) {
         if (err) {
             console.error(err);
             return;
         }
-        if(!video){
+        if (!video) {
             return;
         }
         if (isNaN(video.views)) {
@@ -21,6 +19,7 @@ var viewRegister = function (req, res) {
             video.views++;
         }
         video.save();
+        console.log('viewed video: ' + videoId +" total views: "+video.views);
         res.json(video);
     });
 };
