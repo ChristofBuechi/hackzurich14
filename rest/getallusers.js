@@ -1,11 +1,11 @@
 /**
  * Created by stone on 11.10.2014.
  */
-var User = require('./../app/models/user');
+var Video = require('./../app/models/video');
 
 
 var getallusers = function (req, res) {
-    var query = User.find();
+    var query = Video.find();
     query.select('username');
     query.exec(function (err, person) {
         if (err) {
