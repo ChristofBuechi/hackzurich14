@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README #
 
 This README would normally document whatever steps are necessary to get your application up and running.
@@ -27,3 +28,16 @@ This README would normally document whatever steps are necessary to get your app
 
 * Repo owner or admin
 * Other community or team contact
+=======
+hackzurich14
+============
+
+Project from Hackathon Zurich 2014
+
+
+
+
+
+
+PS: you ned to set the following env-variables for AWS AWS_SECRET_ACCESS_KEY & AWS_ACCESS_KEY_ID
+>>>>>>> a245444e7958bffefc0abb613246b84d8a45d57b
