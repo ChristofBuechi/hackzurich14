@@ -3,22 +3,17 @@
  */
 var Video = require('./../app/models/video');
 var videotop = function (req, res) {
-    var array = [];
-    var video = new Video();
-    video.username = "bender";
-    video.thumbnail = "thumbnail URL";
-    video.video = "video URL";
-    video.creationDate = 1234;
-    video.sizeInKb = 1024;
-    video.lengthInSeconds = 15;
-    array.push(video);
-    array.push({
-        "username": "bender",
-        "thumbnail": "thumbnail URL",
-        "video": "video URL",
-        creationDate: 123124213,
-        sizeInKb: 1024,
-        lengthInSeconds: 15});
-    res.json(array);
+
+    Video.where('views').gte(1).sort('views').exec(
+        function (err, videos) {
+            if (err) {
+                console.error(err);
+                res.send(err);
+            }
+
+            res.json(videos.reverse());
+        }
+    )
+    ;
 };
 module.exports = videotop;

@@ -12,9 +12,12 @@ var path = require('path');
 var Video = require('./app/models/video');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
-// var mongoConnectionconf = 'mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@100.64.2.101:10074/db';
-var mongoConnectionconf = 'mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@127.0.0.1:30000/db'; // connect to our database
+if (!process.env.PRODUCTION) {
+    var mongoConnectionconf = 'mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@127.0.0.1:30000/db'; // connect to our database
+} else {
+    console.log('we are on production');
+    var mongoConnectionconf = 'mongodb://371225c7-190f-47de-a544-167a95f95fc9:1b340c68-ff1c-4917-9b5a-7a5cacb73e2d@100.64.2.101:10074/db';
+}
 
 mongoose.connect(mongoConnectionconf); // connect to our database
 
