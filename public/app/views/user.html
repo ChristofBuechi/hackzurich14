@@ -9,7 +9,7 @@ Please select the User to show the Videos from:
     <div ng-repeat="video in UserVideos">
 
         <div class="videobox col-md-6">
-            <video onplay="foovieessential.trackPlay(this)" _id="{{video._id}}" width="320" controls poster="{{video.thumbnail | trusted }}">
+            <video preload="metadata" onplay="foovieessential.trackPlay(this)" _id="{{video._id}}" width="320" controls poster="{{video.thumbnail | trusted }}">
                 <source ng-src="{{video.video | trusted}}"/>
             </video>
 
@@ -26,7 +26,7 @@ Please select the User to show the Videos from:
             <div class="row">
                 <div class="col-md-4">Creator</div>
                 <div class="col-md-2"></div>
-                <div class="col-md-6"><a href="/api/videos/{{video.username}}">{{video.username}}</a></div>
+                <div class="col-md-6">{{video.username}}</div>
             </div>
 
         </div>
