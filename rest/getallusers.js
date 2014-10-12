@@ -8,7 +8,7 @@ var getallusers = function (req, res) {
 
     Video.distinct('username', function (err, usernames) {
         res.json(usernames);
-    })
+    });
 
 };
 module.exports = getallusers;
