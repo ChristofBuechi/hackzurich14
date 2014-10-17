@@ -8,5 +8,11 @@ hackzurich14
 
 Project from Hackathon Zurich 2014
 
-PS: you ned to set the following env-variables for AWS AWS_SECRET_ACCESS_KEY & AWS_ACCESS_KEY_ID
+PS: you ned to set the following env-variables for the Foovie Server
 
+Amazon WebServices - S3 Storage 
+- AWS_ACCESS_KEY_ID
+- AWS_SECRET_ACCESS_KEY & 
+
+MongoDB MetaStore
+- MONGODBCONNCONF
