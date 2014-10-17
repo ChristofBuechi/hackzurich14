@@ -36,9 +36,9 @@ var video_top = require('./rest/videotop');
 var videoByUserId = require('./rest/videobyuserid');
 var video_create = require('./rest/videocreate');
 var user_create = require('./rest/usercreate');
-var listallusers = require('./rest/getallusers');
-var userauthenticateRequest = require('./rest/userauthenticaterequest');
-var userauthenticateResponse = require('./rest/userauthenticateresponse');
+var user_listAll = require('./rest/getallusers');
+var user_authenticateRequest = require('./rest/userauthenticaterequest');
+var user_authenticateResponse = require('./rest/userauthenticateresponse');
 var video_view = require('./rest/videoview');
 var router = express.Router(); 				// get an instance of the express Router
 // create a video (accessed at POST http://localhost:8080/api/video)
@@ -49,9 +49,9 @@ router.route('/videos/latest').get(video_latest);
 router.route('/videos/top').get(video_top);
 router.route('/videos/:user_id').get(videoByUserId);
 router.route('/user').post(user_create);
-router.route('/users').get(listallusers);
-router.route('/user/authenticate/:user_name').get(userauthenticateRequest);
-router.route('/user/authenticate/:user_name').get(userauthenticateResponse);
+router.route('/users').get(user_listAll);
+router.route('/user/authenticate/:user_name').get(user_authenticateRequest);
+router.route('/user/authenticate/:user_name').get(user_authenticateResponse);
 /*        Video.find(function(err, bears) {
 
  res.json(videos);
